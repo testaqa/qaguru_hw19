@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.ConfigHelper;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,8 +12,8 @@ import java.net.URL;
 public class BrowserstackMobileDriver implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities capabilities) {
-        capabilities.setCapability("browserstack.user", "testaqa2");
-        capabilities.setCapability("browserstack.key", "3JNCwEwsfizw34TfCi8Q");
+        capabilities.setCapability("browserstack.user", ConfigHelper.getBrowserstackUser());
+        capabilities.setCapability("browserstack.key", ConfigHelper.getBrowserstackKey());
         capabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
         capabilities.setCapability("device", "Google Pixel 3");
         capabilities.setCapability("os_version", "9.0");

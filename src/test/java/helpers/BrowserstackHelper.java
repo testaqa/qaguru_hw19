@@ -1,11 +1,13 @@
 package helpers;
 
+import config.ConfigHelper;
+
 import static io.restassured.RestAssured.given;
 
 public class BrowserstackHelper {
     public static String getBrowserstackVideoUrl(String sessionId) {
         String video_url = given()
-                .auth().basic("testaqa2", "3JNCwEwsfizw34TfCi8Q")
+                .auth().basic(ConfigHelper.getBrowserstackUser(), ConfigHelper.getBrowserstackKey())
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()
@@ -20,7 +22,7 @@ public class BrowserstackHelper {
 
     public static String getBSPublicLink(String sessionId){
         String publicUrl = given()
-                .auth().basic("testaqa2", "3JNCwEwsfizw34TfCi8Q")
+                .auth().basic(ConfigHelper.getBrowserstackUser(), ConfigHelper.getBrowserstackKey())
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()
