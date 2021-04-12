@@ -40,6 +40,18 @@ tasks.withType(Test) {
     systemProperties += System.properties
 }
 
+task smoke_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'smoke'
+    }
+}
+
+task android_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'android'
+    }
+}
+
 allure {
     version = "${allureVersion}"
     autoconfigure = true
